@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { YouTubeApiProvider } from './../../providers/you-tube-api/you-tube-api';
 import { Observable } from 'rxjs/Observable';
-
+import { ModalController, NavParams } from 'ionic-angular';
+import { AddPlaylistPage } from '../add-playlist/add-playlist';
+import { VideoModel } from '../../app/models/video-model';
 
 
 @Component({
@@ -16,8 +18,10 @@ export class HomePage {
   nextPage: Observable<any[]>;
   pageCode;
   selectedID: any[];
+  testRadioOpen: boolean;
+  testRadioResult;
 
-  constructor(public navCtrl: NavController, private youTubeProvider: YouTubeApiProvider) {
+  constructor(public navCtrl: NavController, private youTubeProvider: YouTubeApiProvider, public modalCtrl: ModalController) {
   }
 
   searchVideos() {
@@ -40,6 +44,17 @@ export class HomePage {
 
   }
 
+  presentPlaylistModal(name, date, img, id) {
+    var video = new VideoModel(name,date,img,id);
+    let videoModal = this.modalCtrl.create(AddPlaylistPage, {1 : video});
+    videoModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    videoModal.present();
+  }
+ 
+
+  
 
   openResults() {
     this.navCtrl.push('ResultsPage');

@@ -26,7 +26,7 @@
                       <p>{{ video.snippet.publishedAt | date:'short' }} </p>
                   </span>
                 
-                  <button ion-button item-end large color="dark" clear>
+                  <button ion-button item-end large color="dark" clear (click)="presentPlaylistModal( video.snippet.title, video.snippet.publishedAt, video.snippet.thumbnails.default.url, video.id.videoId )">
                       <ion-icon name="add"></ion-icon>
                   </button>
                     

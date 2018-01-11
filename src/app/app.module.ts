@@ -11,13 +11,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { YouTubeApiProvider } from '../providers/you-tube-api/you-tube-api';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { AddPlaylistPage } from '../pages/add-playlist/add-playlist';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    AddPlaylistPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { IonicStorageModule } from '@ionic/storage';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    AddPlaylistPage,
   ],
   providers: [
     StatusBar,

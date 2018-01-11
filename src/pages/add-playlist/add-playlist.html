@@ -1,0 +1,35 @@
+<!--
+  Generated template for the AddPlaylistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>Add Playlist</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1>Choose from an existing playlist...</h1>
+  <ion-item>
+      <ion-label>Playlists...</ion-label>
+      <ion-select item-content [(ngModel)]="choice">
+        <ion-option *ngFor="let playlist of playlists" value="{{playlist.name}}">{{playlist.name}}</ion-option>
+      </ion-select>
+
+  </ion-item>
+  <button ion-button [disabled] color="danger" full (click)="addPlaylist()" [disabled]="choice === ''">Submit</button>
+
+
+  <h1>Or create a new one:</h1>
+  <ion-label stacked>Playlist Name</ion-label>
+
+  <ion-input placeholder="Name..." type="text" [(ngModel)]="listName"></ion-input>
+  <button ion-button color="danger" full (click)="newPlaylist(listName)" [disabled]="listName === ''" >ADD PLAYLIST</button>
+
+
+</ion-content>
