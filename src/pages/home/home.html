@@ -3,16 +3,36 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Video Search</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content>
+  
+  <ion-item>
+    <ion-label stacked>Search term...</ion-label>
+    <ion-input type="text" [(ngModel)]="searchTerm"></ion-input>
+  </ion-item>
+  <button full ion-button (click)="searchVideos()" [disabled]="searchTerm === ''" color="danger">Search Videos</button>
+ 
+  <ion-grid>
+      <ion-list no-padding>
+                  <ion-item *ngFor="let video of searchResult | async">
+                  <ion-thumbnail item-start>
+                      <img [src]="video.snippet.thumbnails.default.url">
+                  </ion-thumbnail>
+                  <span> 
+                      <h2>{{ video.snippet.title }}</h2>
+                      <p>{{ video.snippet.publishedAt | date:'short' }} </p>
+                  </span>
+                
+                  <button ion-button item-end large color="dark" clear>
+                      <ion-icon name="add"></ion-icon>
+                  </button>
+                    
+              </ion-item>
+      </ion-list>
+  </ion-grid>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>

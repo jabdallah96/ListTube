@@ -9,6 +9,9 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { YouTubeApiProvider } from '../providers/you-tube-api/you-tube-api';
+import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { YouTubeApiProvider } from '../providers/you-tube-api/you-tube-api';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
