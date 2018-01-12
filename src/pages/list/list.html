@@ -17,6 +17,9 @@
             <h2 (click)="loadPlaylist(playlist)">{{ playlist.name }}</h2>
             <p>{{playlist.videos.length}} video(s) currently in playlist</p>
         </span>
+        <button ion-button item-content large color="dark" clear (click)="changePlaylist(playlist.name)" >
+            <ion-icon name="create"></ion-icon>
+        </button>
         <button ion-button item-end large color="dark" (click)="deletePlaylist(playlist.name)" clear  >
             <ion-icon name="close"></ion-icon>
         </button>

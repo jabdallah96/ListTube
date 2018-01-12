@@ -7,7 +7,12 @@
 
 <ion-header>
     <ion-navbar>
-      <ion-title>Add Playlist</ion-title>
+      <ion-title>
+        <span>Add Playlist</span>
+        <button ion-button float-right small color="dark" clear (click)="closeModal()"  >
+            <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-title>
     </ion-navbar>
 </ion-header>
 

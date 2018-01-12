@@ -59,17 +59,23 @@ export class AddPlaylistPage {
 
 
   newPlaylist (name:string) {
-    if(this.storage.get(name)){
-      let alert = this.alertCtrl.create({
-        title: 'Existing Playlist',
-        subTitle: 'There is another playlist with the same name, please choose a different one.',
-        buttons: ['Dismiss']
-      });
-      alert.present();
-    }else{
-      this.storage.set(name,new PlaylistModel(name, [this.video]));
-      console.log("Saved");
-    }
+    this.storage.get(name).then(data=>{
+      if(data){
+        let alert = this.alertCtrl.create({
+          title: 'Existing Playlist',
+          subTitle: 'There is another playlist with the same name, please choose a different one.',
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      }else{
+        this.storage.set(name,new PlaylistModel(name, [this.video]));
+        console.log("Saved");
+      }
+    });
+    this.viewCtrl.dismiss();
+  }
+
+  closeModal(){
     this.viewCtrl.dismiss();
   }
 

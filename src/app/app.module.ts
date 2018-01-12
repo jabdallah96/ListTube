@@ -13,6 +13,7 @@ import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { AddPlaylistPage } from '../pages/add-playlist/add-playlist';
 import { ViewPlaylistPage } from '../pages/view-playlist/view-playlist';
+import { EditPlaylistPage } from '../pages/edit-playlist/edit-playlist';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ViewPlaylistPage } from '../pages/view-playlist/view-playlist';
     HomePage,
     ListPage,
     AddPlaylistPage,
-    ViewPlaylistPage
+    ViewPlaylistPage,
+    EditPlaylistPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { ViewPlaylistPage } from '../pages/view-playlist/view-playlist';
     HomePage,
     ListPage,
     AddPlaylistPage,
-    ViewPlaylistPage
+    ViewPlaylistPage,
+    EditPlaylistPage
   ],
   providers: [
     StatusBar,

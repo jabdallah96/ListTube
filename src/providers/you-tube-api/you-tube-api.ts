@@ -16,7 +16,7 @@ export class YouTubeApiProvider {
 
   youtubeParam = {
     key: 'AIzaSyC9td5F-ciJtVuvAae982OFsd4G0Vd6bnc',
-    maxResults: '20',
+    maxResults: '30',
     part: 'id,snippet',
     q: '',
     type: 'video',

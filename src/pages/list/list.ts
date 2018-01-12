@@ -4,6 +4,8 @@ import { VideoModel } from '../../app/models/video-model';
 import { Storage } from '@ionic/storage';
 import { PlaylistModel } from '../../app/models/play-list-model';
 import { ViewPlaylistPage } from '../view-playlist/view-playlist';
+import { ModalController } from 'ionic-angular/components/modal/modal-controller';
+import { EditPlaylistPage } from '../edit-playlist/edit-playlist';
 
 @Component({
   selector: 'page-list',
@@ -14,7 +16,7 @@ export class ListPage {
   icons: string[];
   playlists: PlaylistModel[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:Storage, public modalCtrl: ModalController) {
     this.playlists = [];
     this.storage.forEach((value: PlaylistModel, key, index) => {
       this.playlists.push(value);
@@ -36,4 +38,14 @@ export class ListPage {
     this.storage.remove(name);
   }
 
+  changePlaylist(name:string){
+    let playlistModal = this.modalCtrl.create(EditPlaylistPage, {1 : name});
+    playlistModal.onDidDismiss(data => {
+      this.playlists = [];
+      this.storage.forEach((value: PlaylistModel, key, index) => {
+        this.playlists.push(value);
+      });
+    });
+    playlistModal.present();
+  }
 }
