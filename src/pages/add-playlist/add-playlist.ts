@@ -5,11 +5,9 @@ import { VideoModel } from '../../app/models/video-model';
 import { PlaylistModel } from '../../app/models/play-list-model';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
-/**
- * Generated class for the AddPlaylistPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+/*
+  Class with the role of adding videos to playlists or creating existing playlists. Both functionality are presented
+  to the user from the same page. This a modal launched by the home page. 
  */
 
 @IonicPage()
@@ -24,6 +22,10 @@ export class AddPlaylistPage {
   playlists: PlaylistModel[];
   private video: VideoModel;
 
+  /*
+    Constructor that passes the video from the search page while initializing the available playlists
+  */
+
   constructor(public viewCtrl: ViewController, private storage: Storage, private params: NavParams, private alertCtrl: AlertController) {
     this.video = this.params.get("1");
     this.playlists = [];
@@ -37,10 +39,14 @@ export class AddPlaylistPage {
     console.log('ionViewDidLoad AddPlaylistPage');
   }
 
+  /*
+    Function that adds the chosen video to a playlist chosen by the user from a list of available options. The
+    The function checks if the playlist contains the video. If the input is valid, the the video is added through
+    a new playlist replica.
+  */
+
   addPlaylist(){
-    console.log(this.choice);
     this.storage.get(this.choice).then((val) => {
-      console.log(val.videos.findIndex(video=>video.id==this.video.id));
       if(val.videos.findIndex(video=>video.id==this.video.id)>=0){
         let alert = this.alertCtrl.create({
           title: 'Existing Video',
@@ -57,6 +63,10 @@ export class AddPlaylistPage {
     this.viewCtrl.dismiss();
   }
 
+  /*
+    A function for creating new playlists. The storage is checked to see if the playlist exists. If the input is
+    valid, the playlist is added to the storage with the passed video being its first input.
+  */
 
   newPlaylist (name:string) {
     this.storage.get(name).then(data=>{
@@ -69,7 +79,6 @@ export class AddPlaylistPage {
         alert.present();
       }else{
         this.storage.set(name,new PlaylistModel(name, [this.video]));
-        console.log("Saved");
       }
     });
     this.viewCtrl.dismiss();

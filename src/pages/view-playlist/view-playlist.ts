@@ -7,6 +7,11 @@ import { PlaylistModel } from '../../app/models/play-list-model';
   selector: 'page-view-playlist',
   templateUrl: 'view-playlist.html',
 })
+
+/*
+  A page for viewing an individual playlist and the videos contained in it.
+*/
+
 export class ViewPlaylistPage {
   selectedItem: any;
   icons: string[];
@@ -14,20 +19,25 @@ export class ViewPlaylistPage {
 
   constructor(public navCtrl: NavController, public params: NavParams, private storage: Storage) {
     this.playlist = this.params.get("1");
-    console.log(this.params.get("1"));
-    console.log("Test");
   }
 
+  /*
+    Deletes the video from the playlist array, while calling the storage update function.
+  */
+
   deleteVideo(id:string) {
-    console.log(this.playlist.name);
-      let index = this.playlist.videos.findIndex(video=>video.id==id);
-      this.playlist.videos.forEach(video => {
-          if(video.id == id) {
-            this.playlist.videos.splice(index,1);
-          }
-      });
+    let index = this.playlist.videos.findIndex(video=>video.id==id);
+    this.playlist.videos.forEach(video => {
+         if(video.id == id) {
+           this.playlist.videos.splice(index,1);
+         }
+    });
     this.updateStorage();
   }
+
+  /*
+    Updates the storage by replacing the old playlist with the modified one.
+  */
 
   updateStorage(){
     this.storage.set(this.playlist.name,this.playlist);

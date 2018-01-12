@@ -4,11 +4,9 @@ import 'rxjs/add/operator/map';
 
 
 /*
-  Generated class for the YouTubeApiProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
+  A class for handling the YouTube API, with methods reflecting the needed functionality.
 */
+
 @Injectable()
 export class YouTubeApiProvider {
 

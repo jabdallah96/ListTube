@@ -11,6 +11,12 @@ import { VideoModel } from '../../app/models/video-model';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+/*
+  The main homepage consisting of a search bar that returns a list of relevant videos. This page relegates the
+  add and create functionality for playlists to the launched modal. The page displays 30 videos, but can be
+  improved to load through infinite scroll.
+*/
+
 export class HomePage {
 
   searchTerm = "";
@@ -23,6 +29,11 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private youTubeProvider: YouTubeApiProvider, public modalCtrl: ModalController) {
   }
+
+  /*
+    Takes the search term from the user and launces the youtube provider in order to fetch the result data.
+    The data is then loaded into an array. The next page data is saved for future use with infinite scroll.
+  */
 
   searchVideos() {
     this.pageCode = "";
@@ -43,6 +54,10 @@ export class HomePage {
     })
 
   }
+
+  /*
+    Launches the playlist modal while passing the video title from the results.
+  */
 
   presentPlaylistModal(name, date, img, id) {
     var video = new VideoModel(name,date,img,id);
