@@ -3,19 +3,23 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>PlayLists</ion-title>
+    <ion-title>Playlists</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let playlist of playlists">
-        <ion-thumbnail item-start>
+    <ion-item *ngFor="let playlist of playlists">
+        <button ion-thumbnail (click)="loadPlaylist(playlist)" item-start>
             <img [src]="playlist.videos[0].img">
-        </ion-thumbnail>
+        </button>
         <span> 
-            <h2>{{ playlist.name }}</h2>
+            <h2 (click)="loadPlaylist(playlist)">{{ playlist.name }}</h2>
+            <p>{{playlist.videos.length}} video(s) currently in playlist</p>
         </span>
-    </button>
+        <button ion-button item-end large color="dark" (click)="deletePlaylist(playlist.name)" clear  >
+            <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-item>
   </ion-list>
 </ion-content>

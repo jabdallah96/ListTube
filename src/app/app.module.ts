@@ -12,6 +12,7 @@ import { YouTubeApiProvider } from '../providers/you-tube-api/you-tube-api';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { AddPlaylistPage } from '../pages/add-playlist/add-playlist';
+import { ViewPlaylistPage } from '../pages/view-playlist/view-playlist';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AddPlaylistPage } from '../pages/add-playlist/add-playlist';
     MyApp,
     HomePage,
     ListPage,
-    AddPlaylistPage
+    AddPlaylistPage,
+    ViewPlaylistPage
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { AddPlaylistPage } from '../pages/add-playlist/add-playlist';
     HomePage,
     ListPage,
     AddPlaylistPage,
+    ViewPlaylistPage
   ],
   providers: [
     StatusBar,

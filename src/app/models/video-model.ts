@@ -1,9 +1,12 @@
+import { Injectable } from "@angular/core";
+
+@Injectable()
 export class VideoModel {
     
-    private name: string;
-    private date: Date;
-    private img: string;
-    private id: string;
+    name: string;
+    date: Date;
+    img: string;
+    id: string;
 
     constructor(name: string, date: Date, img: string, id:string){
         this.name = name;
